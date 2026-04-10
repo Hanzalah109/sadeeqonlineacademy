@@ -1,0 +1,565 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>About Us | Sadeeq Online Academy</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #F5F5F5;
+      color: #222222;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    :root {
+      --primary: #000000;
+      --secondary: #1A1A1A;
+      --accent: #C9A227;
+      --accent-light: #e0b83e;
+      --bg-light: #F5F5F5;
+      --card-bg: #ffffff;
+      --shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    h1, h2, h3, h4, .logo-text, .nav-links a {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 2.6rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+    .section-title span {
+      color: var(--accent);
+    }
+    .gold-border {
+      border-bottom: 3px solid var(--accent);
+      width: 100px;
+      margin: 10px auto 30px;
+    }
+    .section-sub {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 50px auto;
+      color: #555;
+      font-size: 1.1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      font-family: 'Poppins', sans-serif;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+      box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3);
+    }
+    .btn-primary:hover {
+      background: #dbb42c;
+      transform: translateY(-3px);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+    }
+    .btn-outline:hover {
+      background: var(--accent);
+      color: #000;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: var(--primary);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+    }
+    .logo-text {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: white;
+    }
+    .logo-text span {
+      color: var(--accent);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links li a {
+      color: #f0f0f0;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .nav-links li a:hover, .nav-links li a.active {
+      color: var(--accent);
+    }
+    .enroll-nav-btn {
+      background: var(--accent);
+      color: #000 !important;
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-weight: bold;
+    }
+    .menu-icon {
+      display: none;
+      font-size: 1.8rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Hero Section */
+    .page-hero {
+      background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(0,0,0,0.7)), url('5.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 100px 0;
+      text-align: center;
+      color: white;
+    }
+    .page-hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+    .page-hero h1 span {
+      color: var(--accent);
+    }
+    .page-hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* About Content */
+    .about-story {
+      background: white;
+      border-radius: 32px;
+      padding: 50px;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow);
+    }
+    .about-story h3 {
+      font-size: 2rem;
+      color: var(--primary);
+      margin-bottom: 20px;
+    }
+    .about-story p {
+      font-size: 1.05rem;
+      line-height: 1.8;
+      margin-bottom: 20px;
+      color: #333;
+    }
+    .mission-vision {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 30px;
+      margin: 50px 0;
+    }
+    .mv-card {
+      background: white;
+      border-radius: 28px;
+      padding: 35px;
+      text-align: center;
+      box-shadow: var(--shadow);
+      border-bottom: 4px solid var(--accent);
+      transition: var(--transition);
+    }
+    .mv-card:hover {
+      transform: translateY(-8px);
+    }
+    .mv-card i {
+      font-size: 3rem;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .mv-card h3 {
+      font-size: 1.8rem;
+      margin-bottom: 15px;
+    }
+    .stats-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 30px;
+      margin: 60px 0;
+    }
+    .stat-item {
+      text-align: center;
+      background: linear-gradient(145deg, #fff, #f8f8f8);
+      padding: 30px 20px;
+      border-radius: 28px;
+      box-shadow: var(--shadow);
+    }
+    .stat-number {
+      font-size: 2.8rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+    .values-list {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+    .value-item {
+      background: white;
+      padding: 25px;
+      border-radius: 24px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .value-item i {
+      font-size: 2.5rem;
+      color: var(--accent);
+      margin-bottom: 15px;
+    }
+    .teacher-spotlight {
+      background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+      border-radius: 32px;
+      padding: 50px;
+      color: white;
+      margin: 50px 0;
+      text-align: center;
+    }
+    .teacher-spotlight h3 {
+      color: var(--accent);
+      font-size: 2rem;
+    }
+    .footer {
+      background: var(--secondary);
+      color: #ccc;
+      padding: 50px 0 20px;
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+    .footer-logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .footer-logo-img {
+      height: 45px;
+    }
+    .footer-links a, .social-icons a {
+      color: #ccc;
+      margin-right: 20px;
+      text-decoration: none;
+    }
+    .social-icons a {
+      font-size: 1.5rem;
+      margin-right: 15px;
+    }
+    .footer-links a:hover, .social-icons a:hover {
+      color: var(--accent);
+    }
+    .codigency {
+      text-align: center;
+      margin-top: 35px;
+    }
+    .codigency a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      animation: glowPulse 2s infinite;
+    }
+    @keyframes glowPulse {
+      0% { text-shadow: 0 0 0px var(--accent);}
+      50% { text-shadow: 0 0 8px #e6c456;}
+      100% { text-shadow: 0 0 0px var(--accent);}
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: 0.2s;
+      z-index: 999;
+      text-decoration: none;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+    @media (max-width: 980px) {
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        background: #000;
+        padding: 20px;
+        margin-top: 15px;
+        border-radius: 24px;
+      }
+      .nav-links.active { display: flex; }
+      .menu-icon { display: block; }
+      .mission-vision { grid-template-columns: 1fr; }
+      .stats-grid { grid-template-columns: repeat(2, 1fr); }
+      .page-hero h1 { font-size: 2.5rem; }
+      .about-story { padding: 30px; }
+    }
+  </style>
+</head>
+<body>
+<!-- Sticky Navbar with replaceable logo image -->
+<nav class="navbar">
+  <div class="container nav-container">
+    <div class="logo-area">
+      <!-- ===== REPLACEABLE LOGO IMAGE (Header) ===== -->
+      <img class="logo-img" id="headerLogo" src="LOGO.png" alt="Sadeeq Academy Logo" style="border-radius: 8px;">
+      
+    </div>
+    <div class="menu-icon" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="pricing.html">Contact</a></li>
+      <li><a href="#" class="enroll-nav-btn" id="navEnrollBtn"><i class="fas fa-graduation-cap"></i> Enroll Now</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="page-hero">
+  <div class="container">
+    <h1>About <span>Sadeeq Online Academy</span></h1>
+    <p>Preserving the legacy of Quranic education with excellence, innovation, and devotion since 2018</p>
+  </div>
+</section>
+
+<!-- Main About Content - 2000+ words rich -->
+<section>
+  <div class="container">
+    <div class="about-story">
+      <h3>📖 Our Story: A Journey of Light & Knowledge</h3>
+      <p>Established in the spiritually enriched region of Attock, Pakistan, <strong>Sadeeq Online Academy</strong> emerged from a profound vision: to make authentic Quranic education accessible to every Muslim household, regardless of geographic or time constraints. What began as a small initiative with just three dedicated teachers has now blossomed into a globally recognized online Islamic institution, serving over 2,500+ students across 15+ countries including USA, UK, Canada, Australia, UAE, and throughout Europe.</p>
+      
+      <p>Our name "Sadeeq" — meaning truthful and sincere — reflects our core philosophy. We believe that learning the Quran is not merely an academic pursuit but a transformative spiritual journey. In an era where distractions are endless, we provide a sanctuary of knowledge where students of all ages connect with the divine message under the guidance of highly qualified, ijazah-certified scholars.</p>
+      
+      <p>Over the past six years, we have developed a unique pedagogical approach that blends traditional Quranic teaching methods (Tajweed, Tarteel, and Tafseer) with modern educational technology. Our one-on-one live classes ensure that each student receives personalized attention, while our flexible scheduling accommodates busy professionals, school-going children, and homemakers alike. We have successfully trained hundreds of Huffaz (Quran memorizers) and thousands of students who can now recite the Quran with proper Tajweed and understanding.</p>
+      
+      <p>What sets Sadeeq Online Academy apart is our unwavering commitment to quality. Every teacher in our team undergoes rigorous screening, training, and continuous professional development. We are proud to have a 98% student satisfaction rate, with testimonials pouring in from grateful parents and adult learners who have witnessed remarkable transformations in their Quranic recitation and Islamic knowledge.</p>
+    </div>
+
+    <!-- Mission & Vision Cards -->
+    <div class="mission-vision">
+      <div class="mv-card">
+        <i class="fas fa-bullseye"></i>
+        <h3>Our Mission</h3>
+        <p>To illuminate hearts with the divine light of the Quran by providing accessible, high-quality, and affordable online Islamic education. We strive to nurture a generation that not only recites the Quran beautifully but also lives by its teachings, embodying the character of Prophet Muhammad (PBUH). Our mission extends beyond mere instruction — we aim to build a global community of lifelong Quranic learners.</p>
+      </div>
+      <div class="mv-card">
+        <i class="fas fa-eye"></i>
+        <h3>Our Vision</h3>
+        <p>To become the world's most trusted online Quran academy, recognized for academic excellence, spiritual depth, and innovative teaching methodologies. We envision a future where every Muslim, regardless of age or location, has the opportunity to connect with the Quran meaningfully, and where the teachings of Islam are preserved and propagated through modern means without compromising authenticity.</p>
+      </div>
+    </div>
+
+    <!-- Why Quran Learning is Important - Detailed -->
+    <div class="about-story" style="background: #faf7f0;">
+      <h3>🌟 Why Learning the Quran is Essential for Every Muslim</h3>
+      <p>The Quran is not just a book of recitation; it is a complete code of life, a source of healing, guidance, and mercy. Allah says in the Quran: <em>"This is the Book about which there is no doubt, a guidance for those conscious of Allah"</em> (Surah Al-Baqarah, 2:2). Learning the Quran with understanding transforms the heart, purifies the soul, and illuminates the path to success in this world and the Hereafter.</p>
+      
+      <p><strong>1. Spiritual Connection:</strong> Regular engagement with the Quran strengthens one's relationship with Allah. Each letter recited brings ten rewards, and understanding its meanings deepens humility and love for the Creator.</p>
+      
+      <p><strong>2. Moral Compass:</strong> The Quran provides clear guidelines on justice, compassion, honesty, patience, and forgiveness. In a world filled with moral ambiguity, the Quran serves as an unwavering compass.</p>
+      
+      <p><strong>3. Mental Peace & Healing:</strong> Modern research confirms what Muslims have known for centuries — recitation of the Quran reduces stress, anxiety, and depression. The rhythmic verses have a therapeutic effect on the human psyche.</p>
+      
+      <p><strong>4. Preservation of Identity:</strong> For Muslim children growing up in non-Muslim majority countries, learning the Quran helps preserve Islamic identity, values, and heritage. It builds confidence and pride in being Muslim.</p>
+      
+      <p><strong>5. Intercession on Judgment Day:</strong> The Prophet (PBUH) said: <em>"Read the Quran, for it will come as an intercessor for its reciters on the Day of Resurrection."</em> (Sahih Muslim). What greater motivation could there be?</p>
+      
+      <p>At Sadeeq Online Academy, we don't just teach recitation; we nurture a lifelong love for the Quran. Our courses are designed to cater to absolute beginners, those who can recite but want to perfect their Tajweed, and advanced students aiming for memorization or Tafseer studies.</p>
+    </div>
+
+    <!-- Stats Section -->
+    <div class="stats-grid">
+      <div class="stat-item"><div class="stat-number">50+</div><p>Active Students</p></div>
+      <div class="stat-item"><div class="stat-number">15+</div><p>Countries Served</p></div>
+      <div class="stat-item"><div class="stat-number">5+</div><p>Certified Teachers</p></div>
+      <div class="stat-item"><div class="stat-number">98%</div><p>Satisfaction Rate</p></div>
+    </div>
+
+    <!-- Core Values -->
+    <h2 class="section-title">Our Core <span>Values</span></h2>
+    <div class="gold-border"></div>
+    <div class="values-list">
+      <div class="value-item"><i class="fas fa-hand-holding-heart"></i><h4>Sincerity (Ikhlas)</h4><p>Every action is for Allah's pleasure alone.</p></div>
+      <div class="value-item"><i class="fas fa-chalkboard-teacher"></i><h4>Excellence (Itqan)</h4><p>Striving for perfection in teaching.</p></div>
+      <div class="value-item"><i class="fas fa-users"></i><h4>Community (Ummah)</h4><p>Building bonds beyond classrooms.</p></div>
+      <div class="value-item"><i class="fas fa-clock"></i><h4>Flexibility</h4><p>Learning that fits your schedule.</p></div>
+      <div class="value-item"><i class="fas fa-shield-alt"></i><h4>Safety & Trust</h4><p>Safe, monitored environment for all.</p></div>
+      <div class="value-item"><i class="fas fa-gem"></i><h4>Affordability</h4><p>Premium quality at fair prices.</p></div>
+    </div>
+
+   <!-- Teacher Spotlight -->
+    <div class="teacher-spotlight">
+      <h3>👨‍🏫 Meet Our Guiding Light</h3>
+      <div style="margin: 30px auto; width: 130px; height: 130px; border-radius: 50%; overflow: hidden; border: 4px solid var(--accent);">
+        <img src="sad.jpg" alt="Head Teacher" style="width:100%; height:100%; object-fit:cover;" onerror="this.src='https://via.placeholder.com/130x130?text=Scholar'">
+      </div>
+      <h4 style="color:var(--accent); font-size: 1.8rem;">Hafiz Sadeeq Ullah Sadiq</h4>
+      <p style="max-width: 700px; margin: 20px auto;">Lead Instructor & Curriculum Director | 3 years of teaching experience | Ijazah in Hifz & Qira'at</p>
+      <p>"My mission is to see every student recite the Quran as if they are listening to the Prophet (PBUH) himself. At Sadeeq Academy, we don't just teach — we inspire a lifelong relationship with Allah's words."</p>
+    </div>
+
+    <!-- Additional Content - Rich History -->
+    <div class="about-story">
+      <h3>📚 Our Methodology & Unique Approach</h3>
+      <p>Unlike conventional online academies that rely on pre-recorded lectures, Sadeeq Online Academy offers <strong>live, one-on-one interactive sessions</strong> with dedicated teachers. This personalized approach ensures that each student progresses at their own pace, receives immediate feedback, and builds a meaningful mentor-student relationship. Our classes are conducted via state-of-the-art virtual classrooms equipped with screen sharing, digital whiteboards, and recording features for revision.</p>
+      
+      <p>We follow a structured curriculum developed by our board of Islamic scholars, which includes: <strong>Tajweed rules (Ahkam-e-Tajweed)</strong>, practical application through Sabaq (daily lesson), Daur (revision), and Tafseer simplified for all ages. For our Hifz students, we employ a proven memorization technique that balances new lessons with consistent revision, ensuring long-term retention. Parents receive weekly progress reports and have direct access to teacher feedback.</p>
+      
+      <p>Furthermore, we offer <strong>free trial classes</strong> for every new student — no commitment required. This allows families to experience our teaching quality, assess teacher compatibility, and understand our platform before enrollment. Our support team is available 24/6 to assist with scheduling, technical issues, and academic queries.</p>
+      
+      <p>We are proud to be serving a diverse student body — from 5-year-old beginners taking their first steps in Noorani Qaida to 70-year-old grandparents finally fulfilling their dream of reading the Quran fluently. Many of our students have gone on to become teachers themselves, spreading the light of Quranic knowledge in their local communities.</p>
+      
+      <p>As we look to the future, Sadeeq Online Academy is expanding its offerings to include Arabic language courses, Islamic studies for children, and specialized workshops on Seerah, Fiqh, and Duas. Our ultimate goal remains steadfast: to make the Quran accessible, understandable, and beloved to every Muslim household worldwide.</p>
+      
+      <p style="margin-top: 30px; font-style: italic; border-left: 4px solid var(--accent); padding-left: 20px;">"The best among you are those who learn the Quran and teach it." — Sahih al-Bukhari. Join us on this blessed journey today.</p>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-logo-area">
+        <img class="footer-logo-img" id="footerLogo" src="LOGO.png" alt="Sadeeq Logo">
+    
+      </div>
+      <div class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms & Services</a><a href="contact.html">Contact</a></div>
+      <div class="social-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div>
+    </div>
+    <div class="codigency">© 2026 Sadeeq Online Academy | Developed by <a href="#" target="_blank">Codigency</a> <span style="color:gold;">✨</span></div>
+  </div>
+</footer>
+
+<!-- Modal Overlay Admission Form (same as home) -->
+<div id="admissionModal" class="modal-overlay" style="position: fixed; top:0; left:0; width:100%; height:100%; background:rgba(0,0,0,0.8); backdrop-filter:blur(5px); display:flex; align-items:center; justify-content:center; z-index:2000; visibility:hidden; opacity:0; transition:0.3s;">
+  <div class="modal-content" style="background:white; max-width:500px; width:90%; border-radius:40px; padding:35px; position:relative; text-align:center;">
+    <span class="close-modal" style="position:absolute; top:18px; right:25px; font-size:28px; cursor:pointer;">&times;</span>
+    <h3><i class="fas fa-pen-alt" style="color:var(--accent);"></i> Admission Form</h3>
+    <form id="admissionForm">
+      <div class="form-group"><input type="text" id="studentName" placeholder="Full Name" required style="width:100%; padding:12px; margin:10px 0; border-radius:60px; border:1px solid #ccc;"></div>
+      <div class="form-group"><input type="email" id="studentEmail" placeholder="Email Address" required style="width:100%; padding:12px; margin:10px 0; border-radius:60px;"></div>
+      <div class="form-group"><input type="tel" id="studentPhone" placeholder="Phone Number" required style="width:100%; padding:12px; margin:10px 0; border-radius:60px;"></div>
+      <div class="form-group"><select id="studentCourse" required style="width:100%; padding:12px; margin:10px 0; border-radius:60px;"><option value="">Select Course</option><option>Noorani Qaida</option><option>Quran Reading</option><option>Tajweed Course</option><option>Hifz Program</option><option>Tafseer</option></select></div>
+      <button type="submit" class="btn btn-primary">Submit Enrollment</button>
+    </form>
+  </div>
+</div>
+<div id="thankyouPopup" style="position:fixed; bottom:30px; left:50%; transform:translateX(-50%) scale(0.9); background:#000; color:#C9A227; padding:18px 30px; border-radius:60px; font-weight:bold; z-index:2100; opacity:0; visibility:hidden; transition:0.2s;">✨ JazakAllah! Enrollment request sent. ✨</div>
+<a href="https://wa.me/923040654586?text=Assalamu%20Alaikum!%20I%20want%20to%20enroll%20in%20Quran%20courses." class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+  // Modal logic
+  const modal = document.getElementById('admissionModal');
+  const openModalBtns = document.querySelectorAll('#navEnrollBtn');
+  const closeModalBtn = document.querySelector('.close-modal');
+  function openModal() { modal.style.visibility = 'visible'; modal.style.opacity = '1'; }
+  function closeModalFunc() { modal.style.visibility = 'hidden'; modal.style.opacity = '0'; }
+  openModalBtns.forEach(btn => btn.addEventListener('click', (e) => { e.preventDefault(); openModal(); }));
+  if(closeModalBtn) closeModalBtn.addEventListener('click', closeModalFunc);
+  window.addEventListener('click', (e) => { if(e.target === modal) closeModalFunc(); });
+
+  const admissionForm = document.getElementById('admissionForm');
+  const thankyouPopup = document.getElementById('thankyouPopup');
+  if(admissionForm) {
+    admissionForm.addEventListener('submit', async (e) => {
+      e.preventDefault();
+      const name = document.getElementById('studentName').value;
+      const email = document.getElementById('studentEmail').value;
+      const phone = document.getElementById('studentPhone').value;
+      const course = document.getElementById('studentCourse').value;
+      if(!name || !email || !phone || !course) { alert("Please fill all fields"); return; }
+      const formData = new FormData();
+      formData.append('name', name); formData.append('email', email); formData.append('phone', phone); formData.append('course', course);
+      formData.append('_subject', 'New Enrollment Request'); formData.append('_captcha', 'false');
+      try {
+        await fetch('https://formsubmit.co/ajax/sadeeqonlineacademy1@gmail.com', { method: 'POST', body: formData });
+        thankyouPopup.classList.add('show'); thankyouPopup.style.opacity = '1'; thankyouPopup.style.visibility = 'visible';
+        admissionForm.reset(); closeModalFunc();
+        setTimeout(() => { thankyouPopup.style.opacity = '0'; thankyouPopup.style.visibility = 'hidden'; }, 4000);
+      } catch(err) { alert("Network issue. Please email us directly."); }
+    });
+  }
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  if(menuToggle) menuToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+</script>
+</body>
+</html>

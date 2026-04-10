@@ -1,0 +1,734 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Pricing & Plans | Sadeeq Online Academy</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #F5F5F5;
+      color: #222222;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    :root {
+      --primary: #000000;
+      --secondary: #1A1A1A;
+      --accent: #C9A227;
+      --accent-light: #e0b83e;
+      --bg-light: #F5F5F5;
+      --card-bg: #ffffff;
+      --shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    h1, h2, h3, h4, .logo-text, .nav-links a {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 2.6rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+    .section-title span {
+      color: var(--accent);
+    }
+    .gold-border {
+      border-bottom: 3px solid var(--accent);
+      width: 100px;
+      margin: 10px auto 30px;
+    }
+    .section-sub {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 50px auto;
+      color: #555;
+      font-size: 1.1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      font-family: 'Poppins', sans-serif;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+      box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3);
+    }
+    .btn-primary:hover {
+      background: #dbb42c;
+      transform: translateY(-3px);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+    }
+    .btn-outline:hover {
+      background: var(--accent);
+      color: #000;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: var(--primary);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+    }
+    .logo-text {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: white;
+    }
+    .logo-text span {
+      color: var(--accent);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links li a {
+      color: #f0f0f0;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .nav-links li a:hover, .nav-links li a.active {
+      color: var(--accent);
+    }
+    .enroll-nav-btn {
+      background: var(--accent);
+      color: #000 !important;
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-weight: bold;
+    }
+    .menu-icon {
+      display: none;
+      font-size: 1.8rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Page Hero */
+    .page-hero {
+      background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(0,0,0,0.7)), url('pri.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 100px 0;
+      text-align: center;
+      color: white;
+    }
+    .page-hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+    .page-hero h1 span {
+      color: var(--accent);
+    }
+    .page-hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Pricing Cards */
+    .pricing-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+      gap: 35px;
+      margin: 50px 0;
+    }
+    .pricing-card {
+      background: white;
+      border-radius: 32px;
+      padding: 40px 30px;
+      text-align: center;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+      position: relative;
+    }
+    .pricing-card:hover {
+      transform: translateY(-12px);
+    }
+    .pricing-card.popular {
+      border: 2px solid var(--accent);
+      transform: scale(1.02);
+    }
+    .popular-badge {
+      position: absolute;
+      top: -15px;
+      right: 20px;
+      background: var(--accent);
+      color: #000;
+      padding: 6px 18px;
+      border-radius: 40px;
+      font-weight: bold;
+      font-size: 0.85rem;
+    }
+    .plan-icon {
+      font-size: 3.5rem;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .pricing-card h3 {
+      font-size: 2rem;
+      margin-bottom: 15px;
+    }
+    .price {
+      font-size: 3rem;
+      font-weight: 800;
+      color: var(--accent);
+      margin: 20px 0;
+    }
+    .price small {
+      font-size: 1rem;
+      font-weight: normal;
+    }
+    .features-list {
+      list-style: none;
+      margin: 30px 0;
+      text-align: left;
+    }
+    .features-list li {
+      padding: 10px 0;
+      border-bottom: 1px solid #eee;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .features-list li i {
+      color: var(--accent);
+      width: 24px;
+    }
+    .btn-price {
+      width: 100%;
+      margin-top: 20px;
+    }
+
+    /* Comparison Table */
+    .comparison-table {
+      background: white;
+      border-radius: 32px;
+      padding: 40px;
+      margin: 60px 0;
+      box-shadow: var(--shadow);
+      overflow-x: auto;
+    }
+    .comparison-table table {
+      width: 100%;
+      border-collapse: collapse;
+    }
+    .comparison-table th, .comparison-table td {
+      padding: 15px;
+      text-align: center;
+      border-bottom: 1px solid #e0e0e0;
+    }
+    .comparison-table th {
+      font-size: 1.2rem;
+      color: var(--primary);
+    }
+    .comparison-table td:first-child {
+      text-align: left;
+      font-weight: 600;
+    }
+    .check-mark {
+      color: var(--accent);
+      font-size: 1.2rem;
+    }
+
+    /* FAQ Section */
+    .faq-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+      gap: 25px;
+      margin-top: 40px;
+    }
+    .faq-item {
+      background: white;
+      border-radius: 24px;
+      padding: 25px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+    }
+    .faq-item:hover {
+      transform: translateY(-5px);
+    }
+    .faq-item h4 {
+      font-size: 1.3rem;
+      margin-bottom: 12px;
+      color: var(--accent);
+    }
+    .faq-item p {
+      color: #555;
+      line-height: 1.6;
+    }
+
+    /* Value Proposition */
+    .value-box {
+      background: linear-gradient(135deg, #1a1a1a, #0a0a0a);
+      border-radius: 32px;
+      padding: 50px;
+      text-align: center;
+      color: white;
+      margin: 50px 0;
+    }
+    .value-box h3 {
+      font-size: 2rem;
+      color: var(--accent);
+      margin-bottom: 20px;
+    }
+    .value-stats {
+      display: flex;
+      justify-content: center;
+      gap: 50px;
+      flex-wrap: wrap;
+      margin-top: 30px;
+    }
+    .value-stats div {
+      text-align: center;
+    }
+    .value-stats .number {
+      font-size: 2.5rem;
+      font-weight: 800;
+      color: var(--accent);
+    }
+
+    .footer {
+      background: var(--secondary);
+      color: #ccc;
+      padding: 50px 0 20px;
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+    .footer-logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .footer-logo-img {
+      height: 45px;
+    }
+    .footer-links a, .social-icons a {
+      color: #ccc;
+      margin-right: 20px;
+      text-decoration: none;
+    }
+    .social-icons a {
+      font-size: 1.5rem;
+      margin-right: 15px;
+    }
+    .footer-links a:hover, .social-icons a:hover {
+      color: var(--accent);
+    }
+    .codigency {
+      text-align: center;
+      margin-top: 35px;
+    }
+    .codigency a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      animation: glowPulse 2s infinite;
+    }
+    @keyframes glowPulse {
+      0% { text-shadow: 0 0 0px var(--accent);}
+      50% { text-shadow: 0 0 8px #e6c456;}
+      100% { text-shadow: 0 0 0px var(--accent);}
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: 0.2s;
+      z-index: 999;
+      text-decoration: none;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.3s;
+    }
+    .modal-overlay.active {
+      visibility: visible;
+      opacity: 1;
+    }
+    .modal-content {
+      background: white;
+      max-width: 500px;
+      width: 90%;
+      border-radius: 40px;
+      padding: 35px;
+      position: relative;
+      text-align: center;
+    }
+    .close-modal {
+      position: absolute;
+      top: 18px;
+      right: 25px;
+      font-size: 28px;
+      cursor: pointer;
+    }
+    .thankyou-popup {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) scale(0.9);
+      background: var(--primary);
+      color: var(--accent);
+      padding: 18px 30px;
+      border-radius: 60px;
+      font-weight: bold;
+      z-index: 2100;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.2s;
+    }
+    .thankyou-popup.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) scale(1);
+    }
+    @media (max-width: 980px) {
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        background: #000;
+        padding: 20px;
+        margin-top: 15px;
+        border-radius: 24px;
+      }
+      .nav-links.active { display: flex; }
+      .menu-icon { display: block; }
+      .page-hero h1 { font-size: 2.5rem; }
+      .pricing-grid { grid-template-columns: 1fr; }
+      .faq-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- Sticky Navbar with replaceable logo image -->
+<nav class="navbar">
+  <div class="container nav-container">
+    <div class="logo-area">
+      <!-- ===== REPLACEABLE LOGO IMAGE (Header) ===== -->
+      <img class="logo-img" id="headerLogo" src="LOGO.png" alt="Sadeeq Academy Logo" style="border-radius: 8px;">
+      
+    </div>
+    <div class="menu-icon" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="pricing.html">Contact</a></li>
+      <li><a href="#" class="enroll-nav-btn" id="navEnrollBtn"><i class="fas fa-graduation-cap"></i> Enroll Now</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="page-hero">
+  <div class="container">
+    <h1>Affordable <span>Pricing Plans</span></h1>
+    <p>Quality Quran education at prices that respect your budget — flexible monthly plans with no hidden fees</p>
+  </div>
+</section>
+
+<!-- Main Pricing Section -->
+<section>
+  <div class="container">
+    <div class="section-sub">Choose the plan that best fits your learning goals. All plans include a FREE trial class, certified teachers, and one-on-one live sessions.</div>
+
+    <!-- Pricing Cards -->
+    <div class="pricing-grid">
+      <!-- Basic Plan -->
+      <div class="pricing-card">
+        <div class="plan-icon"><i class="fas fa-seedling"></i></div>
+        <h3>Basic Plan</h3>
+        <div class="price">$29<span style="font-size: 1rem;">/month</span></div>
+        <ul class="features-list">
+          <li><i class="fas fa-check-circle"></i> 2 Classes per week (30 min each)</li>
+          <li><i class="fas fa-check-circle"></i> Quran Reading / Noorani Qaida</li>
+          <li><i class="fas fa-check-circle"></i> Basic Tajweed rules</li>
+          <li><i class="fas fa-check-circle"></i> Monthly progress report</li>
+          <li><i class="fas fa-check-circle"></i> Flexible scheduling</li>
+          <li><i class="fas fa-times-circle" style="color:#ccc;"></i> Recorded sessions</li>
+          <li><i class="fas fa-times-circle" style="color:#ccc;"></i> Dedicated support</li>
+        </ul>
+        <button class="btn btn-primary btn-price enroll-btn">Choose Basic Plan</button>
+      </div>
+
+      <!-- Standard Plan (Popular) -->
+      <div class="pricing-card popular">
+        <div class="popular-badge"><i class="fas fa-star"></i> Most Popular</div>
+        <div class="plan-icon"><i class="fas fa-chart-line"></i></div>
+        <h3>Standard Plan</h3>
+        <div class="price">$49<span style="font-size: 1rem;">/month</span></div>
+        <ul class="features-list">
+          <li><i class="fas fa-check-circle"></i> 4 Classes per week (45 min each)</li>
+          <li><i class="fas fa-check-circle"></i> Any course (Qaida / Reading / Tajweed)</li>
+          <li><i class="fas fa-check-circle"></i> Complete Tajweed rules application</li>
+          <li><i class="fas fa-check-circle"></i> Weekly progress reports & feedback</li>
+          <li><i class="fas fa-check-circle"></i> Recorded sessions for revision</li>
+          <li><i class="fas fa-check-circle"></i> Dedicated teacher support via WhatsApp</li>
+          <li><i class="fas fa-check-circle"></i> Monthly assessment tests</li>
+        </ul>
+        <button class="btn btn-primary btn-price enroll-btn">Choose Standard Plan</button>
+      </div>
+
+      <!-- Premium Plan -->
+      <div class="pricing-card">
+        <div class="plan-icon"><i class="fas fa-crown"></i></div>
+        <h3>Premium Plan</h3>
+        <div class="price">$79<span style="font-size: 1rem;">/month</span></div>
+        <ul class="features-list">
+          <li><i class="fas fa-check-circle"></i> 6 Classes per week (60 min each)</li>
+          <li><i class="fas fa-check-circle"></i> All courses including Hifz & Tafseer</li>
+          <li><i class="fas fa-check-circle"></i> Advanced Tajweed & Qira'at</li>
+          <li><i class="fas fa-check-circle"></i> Personalized Hifz revision plan</li>
+          <li><i class="fas fa-check-circle"></i> Recorded sessions + notes + resources</li>
+          <li><i class="fas fa-check-circle"></i> 24/7 teacher access & priority support</li>
+          <li><i class="fas fa-check-circle"></i> Ijazah preparation & certification</li>
+          <li><i class="fas fa-check-circle"></i> Free monthly parent-teacher meeting</li>
+        </ul>
+        <button class="btn btn-primary btn-price enroll-btn">Choose Premium Plan</button>
+      </div>
+    </div>
+
+    <!-- Family & Group Discounts -->
+    <div style="background: #f0ede8; border-radius: 28px; padding: 30px; text-align: center; margin: 30px 0;">
+      <i class="fas fa-users" style="font-size: 2.5rem; color: var(--accent);"></i>
+      <h3 style="margin: 15px 0;">Family & Group Discounts</h3>
+      <p>Enroll 2 or more family members and get <strong>15% off</strong> on total fees. Group classes (3-5 students) also available at discounted rates. Contact us for custom pricing.</p>
+      <button class="btn btn-outline enroll-btn" style="margin-top: 15px;">Request Family Discount</button>
+    </div>
+
+    <!-- Detailed Comparison Table -->
+    <h2 class="section-title" style="margin-top: 60px;">Plan <span>Comparison</span></h2>
+    <div class="gold-border"></div>
+    
+    <div class="comparison-table">
+      <table>
+        <thead>
+          <tr><th>Features</th><th>Basic ($29/mo)</th><th>Standard ($49/mo)</th><th>Premium ($79/mo)</th></tr>
+        </thead>
+        <tbody>
+          <tr><td>Classes per week</td><td>2</td><td>4</td><td>6</td></tr>
+          <tr><td>Class duration</td><td>30 min</td><td>45 min</td><td>60 min</td></tr>
+          <tr><td>One-on-one live sessions</td><td><i class="fas fa-check check-mark"></i></td><td><i class="fas fa-check check-mark"></i></td><td><i class="fas fa-check check-mark"></i></td></tr>
+          <tr><td>Certified male/female teachers</td><td><i class="fas fa-check check-mark"></i></td><td><i class="fas fa-check check-mark"></i></td><td><i class="fas fa-check check-mark"></i></td></tr>
+          <tr><td>Progress reports</td><td>Monthly</td><td>Weekly</td><td>Weekly + Parent meeting</td></tr>
+          <tr><td>Recorded sessions access</td><td><i class="fas fa-times" style="color:#ccc;"></i></td><td><i class="fas fa-check check-mark"></i></td><td><i class="fas fa-check check-mark"></i></td></tr>
+          <tr><td>Hifz / Tafseer courses</td><td><i class="fas fa-times" style="color:#ccc;"></i></td><td>Limited</td><td><i class="fas fa-check check-mark"></i></td></tr>
+          <tr><td>24/7 teacher support</td><td><i class="fas fa-times" style="color:#ccc;"></i></td><td>WhatsApp</td><td>Priority + WhatsApp</td></tr>
+          <tr><td>Certificate upon completion</td><td><i class="fas fa-check check-mark"></i></td><td><i class="fas fa-check check-mark"></i></td><td><i class="fas fa-check check-mark"></i></td></tr>
+        </tbody>
+      </table>
+    </div>
+
+    <!-- Value Proposition Section - Rich Content -->
+    <div class="value-box">
+      <h3>Why Thousands Choose Sadeeq Academy</h3>
+      <p>We believe quality Quran education should be accessible to every Muslim family. Our pricing is carefully structured to offer exceptional value without compromising on teaching standards.</p>
+      <div class="value-stats">
+        <div><div class="number">50+</div><p>Happy Students</p></div>
+        <div><div class="number">98%</div><p>Retention Rate</p></div>
+        <div><div class="number">5+</div><p>Expert Teachers</p></div>
+        <div><div class="number">15+</div><p>Countries</p></div>
+      </div>
+    </div>
+
+    <!-- What's Included in All Plans -->
+    <div style="background: white; border-radius: 32px; padding: 40px; margin: 40px 0; box-shadow: var(--shadow);">
+      <h3 style="text-align: center; font-size: 1.8rem; margin-bottom: 30px;"><i class="fas fa-gift" style="color: var(--accent);"></i> Included in Every Plan</h3>
+      <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(250px, 1fr)); gap: 25px;">
+        <div><i class="fas fa-chalkboard-user" style="color: var(--accent);"></i> <strong>FREE Trial Class</strong><br>Experience before committing</div>
+        <div><i class="fas fa-calendar-alt" style="color: var(--accent);"></i> <strong>Flexible Scheduling</strong><br>Choose your own timings</div>
+        <div><i class="fas fa-venus-mars" style="color: var(--accent);"></i> <strong>Male & Female Tutors</strong><br>Your choice of instructor</div>
+        <div><i class="fas fa-sync-alt" style="color: var(--accent);"></i> <strong>Cancel Anytime</strong><br>No long-term contracts</div>
+        <div><i class="fas fa-shield-alt" style="color: var(--accent);"></i> <strong>Safe Learning Environment</strong><br>Monitored sessions</div>
+        <div><i class="fas fa-language" style="color: var(--accent);"></i> <strong>Multi-language Support</strong><br>English, Urdu, Arabic</div>
+      </div>
+    </div>
+
+    <!-- FAQ Section -->
+    <h2 class="section-title">Frequently Asked <span>Questions</span></h2>
+    <div class="gold-border"></div>
+    
+    <div class="faq-grid">
+      <div class="faq-item"><h4><i class="fas fa-question-circle"></i> Is there a free trial?</h4><p>Yes! Every new student gets a FREE 3-day trial (2-3 classes) to experience our teaching methodology and teacher compatibility before committing to any paid plan.</p></div>
+      <div class="faq-item"><h4><i class="fas fa-credit-card"></i> What payment methods do you accept?</h4><p>We accept PayPal, credit/debit cards, bank transfers, and EasyPaisa/JazzCash for Pakistani students. All payments are secure and processed monthly.</p></div>
+      <div class="faq-item"><h4><i class="fas fa-clock"></i> Can I change my plan later?</h4><p>Absolutely! You can upgrade or downgrade your plan at any time with 7 days' notice. Changes take effect at the start of the next billing cycle.</p></div>
+      <div class="faq-item"><h4><i class="fas fa-child"></i> Do you have discounts for siblings?</h4><p>Yes, we offer 15% discount for 2+ family members enrolling together. Contact our support team to apply the family discount.</p></div>
+      <div class="faq-item"><h4><i class="fas fa-globe"></i> Are these prices in USD?</h4><p>Yes, prices are in US Dollars. We offer competitive local pricing for students in Pakistan, India, Bangladesh, and other South Asian countries — please contact us for regional rates.</p></div>
+      <div class="faq-item"><h4><i class="fas fa-certificate"></i> Do you provide certificates?</h4><p>Yes, upon successful completion of any course, students receive a verified certificate from Sadeeq Online Academy recognizing their achievement.</p></div>
+      <div class="faq-item"><h4><i class="fas fa-video"></i> What platform do you use for classes?</h4><p>We use Zoom, Google Meet, or our dedicated virtual classroom. All sessions are live, one-on-one, and can be recorded for revision upon request.</p></div>
+      <div class="faq-item"><h4><i class="fas fa-refresh"></i> What if I miss a class?</h4><p>We offer flexible rescheduling. Just inform your teacher at least 4 hours in advance, and we'll arrange a makeup class at no extra cost.</p></div>
+    </div>
+
+    <!-- Call to Action -->
+    <div style="text-align: center; margin-top: 60px; padding: 40px; background: linear-gradient(135deg, #fff8e7, #fff); border-radius: 32px;">
+      <h3 style="font-size: 1.8rem;">Ready to Begin Your Quran Journey?</h3>
+      <p style="margin: 20px 0;">Start with a free trial class — no payment required. Experience the Sadeeq difference today.</p>
+      <button class="btn btn-primary enroll-btn" style="font-size: 1.1rem; padding: 14px 40px;"><i class="fas fa-graduation-cap"></i> Claim Your Free Trial</button>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-logo-area">
+        <img class="footer-logo-img" id="footerLogo" src="LOGO.png" alt="Sadeeq Logo">
+       
+      </div>
+      <div class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms & Services</a><a href="contact.html">Contact</a></div>
+      <div class="social-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div>
+    </div>
+    <div class="codigency">© 2026 Sadeeq Online Academy | Developed by <a href="#" target="_blank">Codigency</a> <span style="color:gold;">✨</span></div>
+  </div>
+</footer>
+
+<!-- Modal Overlay Admission Form -->
+<div id="admissionModal" class="modal-overlay">
+  <div class="modal-content">
+    <span class="close-modal" id="closeModalBtn">&times;</span>
+    <h3><i class="fas fa-pen-alt" style="color:var(--accent);"></i> Enrollment Form</h3>
+    <form id="admissionForm">
+      <div class="form-group"><input type="text" id="studentName" placeholder="Full Name" required style="width:100%; padding:12px; margin:10px 0; border-radius:60px; border:1px solid #ccc;"></div>
+      <div class="form-group"><input type="email" id="studentEmail" placeholder="Email Address" required style="width:100%; padding:12px; margin:10px 0; border-radius:60px;"></div>
+      <div class="form-group"><input type="tel" id="studentPhone" placeholder="Phone Number" required style="width:100%; padding:12px; margin:10px 0; border-radius:60px;"></div>
+      <div class="form-group"><select id="studentCourse" required style="width:100%; padding:12px; margin:10px 0; border-radius:60px;"><option value="">Select Preferred Plan</option><option>Basic Plan ($29/mo)</option><option>Standard Plan ($49/mo)</option><option>Premium Plan ($79/mo)</option><option>Family Discount Plan</option></select></div>
+      <button type="submit" class="btn btn-primary">Submit Enrollment</button>
+    </form>
+  </div>
+</div>
+
+<div id="thankyouPopup" class="thankyou-popup">✨ JazakAllah! Enrollment request sent. We'll contact you within 24 hours. ✨</div>
+<a href="https://wa.me/923040654586?text=Assalamu%20Alaikum!%20I%20want%20to%20know%20about%20pricing%20plans." class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+  const modal = document.getElementById('admissionModal');
+  const openModalBtns = document.querySelectorAll('#navEnrollBtn, .enroll-btn');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  function openModalFunc() { modal.classList.add('active'); }
+  function closeModalFunc() { modal.classList.remove('active'); }
+  openModalBtns.forEach(btn => btn.addEventListener('click', (e) => { e.preventDefault(); openModalFunc(); }));
+  if(closeModalBtn) closeModalBtn.addEventListener('click', closeModalFunc);
+  window.addEventListener('click', (e) => { if(e.target === modal) closeModalFunc(); });
+
+  const admissionForm = document.getElementById('admissionForm');
+  const thankyouPopup = document.getElementById('thankyouPopup');
+  admissionForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('studentName').value;
+    const email = document.getElementById('studentEmail').value;
+    const phone = document.getElementById('studentPhone').value;
+    const course = document.getElementById('studentCourse').value;
+    if(!name || !email || !phone || !course) { alert("Please fill all fields"); return; }
+    const formData = new FormData();
+    formData.append('name', name); formData.append('email', email); formData.append('phone', phone); formData.append('course', course);
+    formData.append('_subject', 'New Pricing Plan Enrollment'); formData.append('_captcha', 'false');
+    try {
+      await fetch('https://formsubmit.co/ajax/sadeeqonlineacademy1@gmail.com', { method: 'POST', body: formData });
+      thankyouPopup.classList.add('show');
+      admissionForm.reset(); closeModalFunc();
+      setTimeout(() => thankyouPopup.classList.remove('show'), 4000);
+    } catch(err) { alert("Network issue. Please email us directly."); }
+  });
+
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  if(menuToggle) menuToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+</script>
+</body>
+</html>

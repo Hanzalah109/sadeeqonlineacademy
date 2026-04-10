@@ -1,0 +1,662 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+  <title>Our Courses | Sadeeq Online Academy</title>
+  <!-- Font Awesome 6 -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <!-- Google Fonts -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800&family=Playfair+Display:wght@400;500;600;700;800&display=swap" rel="stylesheet">
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: 'Poppins', sans-serif;
+      background-color: #F5F5F5;
+      color: #222222;
+      scroll-behavior: smooth;
+      overflow-x: hidden;
+    }
+
+    :root {
+      --primary: #000000;
+      --secondary: #1A1A1A;
+      --accent: #C9A227;
+      --accent-light: #e0b83e;
+      --bg-light: #F5F5F5;
+      --card-bg: #ffffff;
+      --shadow: 0 20px 35px -12px rgba(0, 0, 0, 0.1);
+      --transition: all 0.3s ease;
+    }
+
+    h1, h2, h3, h4, .logo-text, .nav-links a {
+      font-family: 'Playfair Display', serif;
+    }
+
+    .container {
+      max-width: 1280px;
+      margin: 0 auto;
+      padding: 0 24px;
+    }
+
+    section {
+      padding: 80px 0;
+    }
+
+    .section-title {
+      font-size: 2.6rem;
+      font-weight: 700;
+      text-align: center;
+      margin-bottom: 20px;
+      color: var(--primary);
+    }
+    .section-title span {
+      color: var(--accent);
+    }
+    .gold-border {
+      border-bottom: 3px solid var(--accent);
+      width: 100px;
+      margin: 10px auto 30px;
+    }
+    .section-sub {
+      text-align: center;
+      max-width: 800px;
+      margin: 0 auto 50px auto;
+      color: #555;
+      font-size: 1.1rem;
+    }
+
+    .btn {
+      display: inline-block;
+      padding: 12px 30px;
+      border-radius: 40px;
+      font-weight: 600;
+      text-decoration: none;
+      transition: var(--transition);
+      font-size: 1rem;
+      cursor: pointer;
+      border: none;
+      font-family: 'Poppins', sans-serif;
+    }
+    .btn-primary {
+      background: var(--accent);
+      color: #000;
+      box-shadow: 0 4px 12px rgba(201, 162, 39, 0.3);
+    }
+    .btn-primary:hover {
+      background: #dbb42c;
+      transform: translateY(-3px);
+    }
+    .btn-outline {
+      background: transparent;
+      border: 2px solid var(--accent);
+      color: var(--accent);
+    }
+    .btn-outline:hover {
+      background: var(--accent);
+      color: #000;
+    }
+
+    /* Navbar */
+    .navbar {
+      background: var(--primary);
+      padding: 15px 0;
+      position: sticky;
+      top: 0;
+      z-index: 1000;
+      box-shadow: 0 2px 20px rgba(0,0,0,0.2);
+    }
+    .nav-container {
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      flex-wrap: wrap;
+    }
+    .logo-area {
+      display: flex;
+      align-items: center;
+      gap: 10px;
+    }
+    .logo-img {
+      height: 48px;
+      width: auto;
+      object-fit: contain;
+    }
+    .logo-text {
+      font-size: 1.7rem;
+      font-weight: 700;
+      color: white;
+    }
+    .logo-text span {
+      color: var(--accent);
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 28px;
+      list-style: none;
+    }
+    .nav-links li a {
+      color: #f0f0f0;
+      text-decoration: none;
+      font-weight: 500;
+      transition: 0.2s;
+    }
+    .nav-links li a:hover, .nav-links li a.active {
+      color: var(--accent);
+    }
+    .enroll-nav-btn {
+      background: var(--accent);
+      color: #000 !important;
+      padding: 8px 20px;
+      border-radius: 40px;
+      font-weight: bold;
+    }
+    .menu-icon {
+      display: none;
+      font-size: 1.8rem;
+      color: white;
+      cursor: pointer;
+    }
+
+    /* Page Hero */
+    .page-hero {
+      background: linear-gradient(135deg, rgba(0,0,0,0.85), rgba(0,0,0,0.7)), url('1.jpg');
+      background-size: cover;
+      background-position: center;
+      padding: 100px 0;
+      text-align: center;
+      color: white;
+    }
+    .page-hero h1 {
+      font-size: 3.5rem;
+      margin-bottom: 20px;
+    }
+    .page-hero h1 span {
+      color: var(--accent);
+    }
+    .page-hero p {
+      font-size: 1.2rem;
+      max-width: 700px;
+      margin: 0 auto;
+    }
+
+    /* Course Cards Detailed */
+    .course-detailed {
+      background: white;
+      border-radius: 32px;
+      padding: 40px;
+      margin-bottom: 40px;
+      box-shadow: var(--shadow);
+      transition: var(--transition);
+      border-left: 6px solid var(--accent);
+    }
+    .course-detailed:hover {
+      transform: translateX(8px);
+    }
+    .course-header {
+      display: flex;
+      align-items: center;
+      gap: 20px;
+      margin-bottom: 20px;
+      flex-wrap: wrap;
+    }
+    .course-header i {
+      font-size: 3rem;
+      color: var(--accent);
+    }
+    .course-header h2 {
+      font-size: 2rem;
+      color: var(--primary);
+    }
+    .course-meta {
+      display: flex;
+      gap: 25px;
+      flex-wrap: wrap;
+      margin: 20px 0;
+      padding: 15px 0;
+      border-top: 1px solid #eee;
+      border-bottom: 1px solid #eee;
+    }
+    .course-meta span {
+      font-weight: 500;
+    }
+    .course-meta i {
+      color: var(--accent);
+      margin-right: 8px;
+    }
+    .course-description {
+      line-height: 1.8;
+      margin: 20px 0;
+      color: #444;
+    }
+    .course-list {
+      margin: 20px 0 20px 25px;
+    }
+    .course-list li {
+      margin: 10px 0;
+      line-height: 1.6;
+    }
+    .btn-enroll-course {
+      margin-top: 15px;
+    }
+    .comparison-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+      gap: 30px;
+      margin: 60px 0;
+    }
+    .level-card {
+      background: white;
+      border-radius: 28px;
+      padding: 30px;
+      text-align: center;
+      box-shadow: var(--shadow);
+    }
+    .level-card h3 {
+      font-size: 1.8rem;
+      margin: 15px 0;
+    }
+    .badge {
+      background: var(--accent);
+      color: #000;
+      padding: 5px 15px;
+      border-radius: 30px;
+      display: inline-block;
+      font-weight: bold;
+    }
+    .footer {
+      background: var(--secondary);
+      color: #ccc;
+      padding: 50px 0 20px;
+    }
+    .footer-grid {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-between;
+      align-items: center;
+      gap: 30px;
+    }
+    .footer-logo-area {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+    }
+    .footer-logo-img {
+      height: 45px;
+    }
+    .footer-links a, .social-icons a {
+      color: #ccc;
+      margin-right: 20px;
+      text-decoration: none;
+    }
+    .social-icons a {
+      font-size: 1.5rem;
+      margin-right: 15px;
+    }
+    .footer-links a:hover, .social-icons a:hover {
+      color: var(--accent);
+    }
+    .codigency {
+      text-align: center;
+      margin-top: 35px;
+    }
+    .codigency a {
+      color: var(--accent);
+      text-decoration: none;
+      font-weight: 600;
+      animation: glowPulse 2s infinite;
+    }
+    @keyframes glowPulse {
+      0% { text-shadow: 0 0 0px var(--accent);}
+      50% { text-shadow: 0 0 8px #e6c456;}
+      100% { text-shadow: 0 0 0px var(--accent);}
+    }
+    .whatsapp-float {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #25D366;
+      color: white;
+      width: 60px;
+      height: 60px;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      box-shadow: 0 4px 15px rgba(0,0,0,0.2);
+      transition: 0.2s;
+      z-index: 999;
+      text-decoration: none;
+    }
+    .whatsapp-float:hover {
+      transform: scale(1.1);
+    }
+    .modal-overlay {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      backdrop-filter: blur(5px);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      z-index: 2000;
+      visibility: hidden;
+      opacity: 0;
+      transition: 0.3s;
+    }
+    .modal-overlay.active {
+      visibility: visible;
+      opacity: 1;
+    }
+    .modal-content {
+      background: white;
+      max-width: 500px;
+      width: 90%;
+      border-radius: 40px;
+      padding: 35px;
+      position: relative;
+      text-align: center;
+    }
+    .close-modal {
+      position: absolute;
+      top: 18px;
+      right: 25px;
+      font-size: 28px;
+      cursor: pointer;
+    }
+    .thankyou-popup {
+      position: fixed;
+      bottom: 30px;
+      left: 50%;
+      transform: translateX(-50%) scale(0.9);
+      background: var(--primary);
+      color: var(--accent);
+      padding: 18px 30px;
+      border-radius: 60px;
+      font-weight: bold;
+      z-index: 2100;
+      opacity: 0;
+      visibility: hidden;
+      transition: 0.2s;
+    }
+    .thankyou-popup.show {
+      opacity: 1;
+      visibility: visible;
+      transform: translateX(-50%) scale(1);
+    }
+    @media (max-width: 980px) {
+      .nav-links {
+        display: none;
+        width: 100%;
+        flex-direction: column;
+        background: #000;
+        padding: 20px;
+        margin-top: 15px;
+        border-radius: 24px;
+      }
+      .nav-links.active { display: flex; }
+      .menu-icon { display: block; }
+      .page-hero h1 { font-size: 2.5rem; }
+      .course-header h2 { font-size: 1.5rem; }
+    }
+  </style>
+</head>
+<body>
+<!-- Sticky Navbar with replaceable logo image -->
+<nav class="navbar">
+  <div class="container nav-container">
+    <div class="logo-area">
+      <!-- ===== REPLACEABLE LOGO IMAGE (Header) ===== -->
+      <img class="logo-img" id="headerLogo" src="LOGO.png" alt="Sadeeq Academy Logo" style="border-radius: 8px;">
+      
+    </div>
+    <div class="menu-icon" id="menuToggle">
+      <i class="fas fa-bars"></i>
+    </div>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="index.html">Home</a></li>
+      <li><a href="about.html">About</a></li>
+      <li><a href="courses.html">Courses</a></li>
+      <li><a href="pricing.html">Pricing</a></li>
+      <li><a href="pricing.html">Contact</a></li>
+      <li><a href="#" class="enroll-nav-btn" id="navEnrollBtn"><i class="fas fa-graduation-cap"></i> Enroll Now</a></li>
+    </ul>
+  </div>
+</nav>
+
+<!-- Hero Section -->
+<section class="page-hero">
+  <div class="container">
+    <h1>Our <span>Courses</span></h1>
+    <p>Comprehensive Quranic education tailored for every level — from beginners to advanced scholars</p>
+  </div>
+</section>
+
+<!-- Main Courses Content - 2000+ words -->
+<section>
+  <div class="container">
+    <div class="section-sub">Explore our meticulously designed courses that blend traditional Islamic pedagogy with modern teaching techniques. Each course is taught live, one-on-one, by certified Ijazah holders.</div>
+
+    <!-- Course 1: Noorani Qaida -->
+    <div class="course-detailed">
+      <div class="course-header">
+        <i class="fas fa-book-quran"></i>
+        <h2>Noorani Qaida</h2>
+      </div>
+      <div class="course-meta">
+        <span><i class="fas fa-clock"></i> Duration: 2-4 Months</span>
+        <span><i class="fas fa-calendar-alt"></i> Classes: 3-5 per week</span>
+        <span><i class="fas fa-level-up-alt"></i> Level: Absolute Beginner</span>
+      </div>
+      <div class="course-description">
+        <p><strong>Noorani Qaida</strong> is the foundational course for anyone beginning their Quranic journey. This systematic guide teaches Arabic alphabets, pronunciation (Makharij), and basic Tajweed rules. Students learn letter recognition, joining letters, vowel signs (Harakat), Tanween, Maddah, Leen, and practical exercises to build fluency. Our instructors use interactive whiteboards and repetition techniques to ensure mastery before moving to Quran reading.</p>
+        <p>What makes our Noorani Qaida unique is the personalized pace — each student progresses according to their ability. Children as young as 4 years old, as well as adult beginners, have successfully completed this course and transitioned to Quran reading with confidence. By the end, students will be able to read any Quranic word with correct pronunciation.</p>
+      </div>
+      <ul class="course-list">
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> 29 Arabic letters & their proper exits (Makharij)</li>
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Short vowels (Fatha, Kasra, Damma) & Long vowels (Madd)</li>
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Sukoon, Tashdeed, and Tanween rules</li>
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Basic Tajweed principles for beginners</li>
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Weekly assessments and progress tracking</li>
+      </ul>
+      <button class="btn btn-primary enroll-btn btn-enroll-course">Enroll in Noorani Qaida</button>
+    </div>
+
+    <!-- Course 2: Quran Reading (Nazra) -->
+    <div class="course-detailed">
+      <div class="course-header">
+        <i class="fas fa-quran"></i>
+        <h2>Quran Reading (Nazra)</h2>
+      </div>
+      <div class="course-meta">
+        <span><i class="fas fa-clock"></i> Duration: 6-12 Months (Complete Quran)</span>
+        <span><i class="fas fa-calendar-alt"></i> Classes: 3-5 per week</span>
+        <span><i class="fas fa-level-up-alt"></i> Level: After Qaida</span>
+      </div>
+      <div class="course-description">
+        <p>Once students master the Qaida, they proceed to <strong>Nazra Quran</strong> — reading the Holy Quran with proper pronunciation and basic Tajweed. Our teachers guide students page by page, ensuring smooth, fluent recitation. Each session includes Sabaq (new lesson), Sabaq Parhna (revision of previous lessons), and Daur (overall revision). Students typically complete the entire Quran within 6-12 months depending on frequency and effort.</p>
+        <p>This course emphasizes consistent practice and builds a strong relationship with the Quran. Parents receive monthly reports highlighting progress, areas of improvement, and teacher feedback. Upon completion, students receive a certificate and can confidently recite the Quran in prayers and daily life.</p>
+      </div>
+      <ul class="course-list">
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Complete Quran recitation with proper Makharij</li>
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Application of basic Tajweed rules in reading</li>
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Fluency and rhythm in recitation (Tarteel)</li>
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Memorization of important Surahs and Duas</li>
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Optional: Daily homework and revision plans</li>
+      </ul>
+      <button class="btn btn-primary enroll-btn btn-enroll-course">Enroll in Quran Reading</button>
+    </div>
+
+    <!-- Course 3: Tajweed Course -->
+    <div class="course-detailed">
+      <div class="course-header">
+        <i class="fas fa-microphone-alt"></i>
+        <h2>Tajweed Course</h2>
+      </div>
+      <div class="course-meta">
+        <span><i class="fas fa-clock"></i> Duration: 4-8 Months</span>
+        <span><i class="fas fa-calendar-alt"></i> Classes: 2-3 per week</span>
+        <span><i class="fas fa-level-up-alt"></i> Level: Intermediate</span>
+      </div>
+      <div class="course-description">
+        <p><strong>Tajweed</strong> (literally "to beautify" or "to improve") is the science of reciting the Quran as it was revealed to Prophet Muhammad (PBUH). This course delves deep into the intricate rules of pronunciation, stopping, starting, and characteristics of Arabic letters. Students learn the theoretical rules and practice them practically on selected Quranic verses.</p>
+        <p>Topics covered include: Ghunnah (nasalization), Idgham (merging), Iqlab (conversion), Ikhfa (hiding), rules of Meem Sakinah, Laam Sakinah, Qalqalah, and the various types of Madd (prolongation). Our teachers are certified in Qira'at and provide individual feedback. By the end, students will recite with the beauty and precision of expert reciters.</p>
+      </div>
+      <ul class="course-list">
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Complete Tajweed rules with practical application</li>
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Characteristics (Sifaat) of Arabic letters</li>
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Rules of Raa, Laam, and Noon Qutni</li>
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Advanced Madd (prolongation) rules</li>
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Certificate of Tajweed proficiency</li>
+      </ul>
+      <button class="btn btn-primary enroll-btn btn-enroll-course">Enroll in Tajweed</button>
+    </div>
+
+    <!-- Course 4: Hifz Program -->
+    <div class="course-detailed">
+      <div class="course-header">
+        <i class="fas fa-memory"></i>
+        <h2>Hifz Program (Quran Memorization)</h2>
+      </div>
+      <div class="course-meta">
+        <span><i class="fas fa-clock"></i> Duration: 2-5 Years (flexible)</span>
+        <span><i class="fas fa-calendar-alt"></i> Classes: 5-6 per week</span>
+        <span><i class="fas fa-level-up-alt"></i> Level: Advanced</span>
+      </div>
+      <div class="course-description">
+        <p>Our <strong>Hifz Program</strong> is designed for students who aspire to memorize the entire Quran with precision and strong retention. We follow a proven methodology: new lesson (Sabaq) of ½ to 1 page daily, recent revision (Sabaq Parhna) of previous 5-7 pages, and old revision (Daur) of the last 5-10 Juz. This three-tier system ensures long-term memorization.</p>
+        <p>Each student is assigned a dedicated Hifz teacher who monitors progress, corrects Tajweed, and provides motivation. We offer both part-time and full-time tracks. Many of our students have completed Hifz within 2-3 years and gone on to lead Tarawih prayers. Parents receive weekly progress reports and recorded sessions for revision.</p>
+      </div>
+      <ul class="course-list">
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Structured memorization plan tailored to each student</li>
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Daily revision schedule to prevent forgetting</li>
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Tajweed-focused memorization</li>
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Mock tests and full Quran review sessions</li>
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Ijazah preparation for advanced students</li>
+      </ul>
+      <button class="btn btn-primary enroll-btn btn-enroll-course">Enroll in Hifz</button>
+    </div>
+
+    <!-- Course 5: Tafseer Course -->
+    <div class="course-detailed">
+      <div class="course-header">
+        <i class="fas fa-mosque"></i>
+        <h2>Tafseer Course (Quranic Exegesis)</h2>
+      </div>
+      <div class="course-meta">
+        <span><i class="fas fa-clock"></i> Duration: 6-12 Months per Juz</span>
+        <span><i class="fas fa-calendar-alt"></i> Classes: 2 per week</span>
+        <span><i class="fas fa-level-up-alt"></i> Level: Intermediate/Advanced</span>
+      </div>
+      <div class="course-description">
+        <p><strong>Tafseer</strong> is the profound study of understanding the meanings, context, and lessons of the Quran. This course covers selected Surahs and Juz, explaining the reasons for revelation (Asbab al-Nuzul), linguistic analysis, and practical applications in daily life. Students learn from classical Tafseer works like Tafseer Ibn Kathir and contemporary scholarship.</p>
+        <p>The course bridges the gap between recitation and comprehension, enabling students to connect deeply with Allah's words. We discuss historical events, rulings, parables, and spiritual insights. By the end, students gain a holistic understanding of the Quran's message and how to implement it in modern times.</p>
+      </div>
+      <ul class="course-list">
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Detailed explanation of selected Surahs (e.g., Yaseen, Rahman, Mulk, etc.)</li>
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Background of revelation and historical context</li>
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Linguistic miracles and rhetorical analysis</li>
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Contemporary application of Quranic teachings</li>
+        <li><i class="fas fa-check-circle" style="color:var(--accent);"></i> Interactive Q&A and reflective discussions</li>
+      </ul>
+      <button class="btn btn-primary enroll-btn btn-enroll-course">Enroll in Tafseer</button>
+    </div>
+
+    <!-- Learning Levels -->
+    <h2 class="section-title" style="margin-top: 60px;">Find Your <span>Level</span></h2>
+    <div class="gold-border"></div>
+    <div class="comparison-grid">
+      <div class="level-card"><i class="fas fa-seedling" style="font-size: 2.5rem; color: var(--accent);"></i><h3>Beginner</h3><p>Noorani Qaida & Basic Quran Reading. No prior knowledge required.</p><span class="badge">Start Here</span></div>
+      <div class="level-card"><i class="fas fa-chart-line" style="font-size: 2.5rem; color: var(--accent);"></i><h3>Intermediate</h3><p>Tajweed rules, fluency improvement, and selected memorization.</p><span class="badge">Grow Deeper</span></div>
+      <div class="level-card"><i class="fas fa-crown" style="font-size: 2.5rem; color: var(--accent);"></i><h3>Advanced</h3><p>Complete Hifz, Tafseer, and Ijazah preparation.</p><span class="badge">Mastery</span></div>
+    </div>
+
+    <!-- Additional Rich Content -->
+    <div style="background: linear-gradient(135deg, #fff8e7, #fff); border-radius: 32px; padding: 40px; margin: 40px 0; text-align: center;">
+      <i class="fas fa-certificate" style="font-size: 3rem; color: var(--accent);"></i>
+      <h3 style="margin: 20px 0;">Certification & Progression</h3>
+      <p>Upon successful completion of each course, students receive a verified certificate. We also offer integrated pathways: Qaida → Quran Reading → Tajweed → Hifz or Tafseer. Our alumni have gone on to become Quran teachers, Imams, and scholars. Join our growing family of over 50 successful graduates.</p>
+      <p style="margin-top: 20px;">All courses include free trial class, flexible rescheduling, and access to recorded sessions. Need a customized plan? Contact our academic advisors.</p>
+      <button class="btn btn-primary enroll-btn" style="margin-top: 25px;"><i class="fas fa-headset"></i> Get Free Consultation</button>
+    </div>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer class="footer">
+  <div class="container">
+    <div class="footer-grid">
+      <div class="footer-logo-area">
+        <img class="footer-logo-img" id="footerLogo" src="LOGO.png" alt="Sadeeq Logo">
+      
+      </div>
+      <div class="footer-links"><a href="privacy.html">Privacy Policy</a><a href="terms.html">Terms & Services</a><a href="contact.html">Contact</a></div>
+      <div class="social-icons"><a href="#"><i class="fab fa-facebook-f"></i></a><a href="#"><i class="fab fa-instagram"></i></a></div>
+    </div>
+    <div class="codigency">© 2026 Sadeeq Online Academy | Developed by <a href="#" target="_blank">Codigency</a> <span style="color:gold;">✨</span></div>
+  </div>
+</footer>
+
+<!-- Modal & Scripts -->
+<div id="admissionModal" class="modal-overlay">
+  <div class="modal-content">
+    <span class="close-modal" id="closeModalBtn">&times;</span>
+    <h3><i class="fas fa-pen-alt" style="color:var(--accent);"></i> Admission Form</h3>
+    <form id="admissionForm">
+      <div class="form-group"><input type="text" id="studentName" placeholder="Full Name" required style="width:100%; padding:12px; margin:10px 0; border-radius:60px; border:1px solid #ccc;"></div>
+      <div class="form-group"><input type="email" id="studentEmail" placeholder="Email Address" required style="width:100%; padding:12px; margin:10px 0; border-radius:60px;"></div>
+      <div class="form-group"><input type="tel" id="studentPhone" placeholder="Phone Number" required style="width:100%; padding:12px; margin:10px 0; border-radius:60px;"></div>
+      <div class="form-group"><select id="studentCourse" required style="width:100%; padding:12px; margin:10px 0; border-radius:60px;"><option value="">Select Course</option><option>Noorani Qaida</option><option>Quran Reading</option><option>Tajweed Course</option><option>Hifz Program</option><option>Tafseer</option></select></div>
+      <button type="submit" class="btn btn-primary">Submit Enrollment</button>
+    </form>
+  </div>
+</div>
+<div id="thankyouPopup" class="thankyou-popup">✨ JazakAllah! Enrollment request sent. We'll contact you soon. ✨</div>
+<a href="https://wa.me/923040654586?text=Assalamu%20Alaikum!%20I%20want%20to%20enroll%20in%20Quran%20courses." class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+
+<script>
+  const modal = document.getElementById('admissionModal');
+  const openModalBtns = document.querySelectorAll('#navEnrollBtn, .enroll-btn');
+  const closeModalBtn = document.getElementById('closeModalBtn');
+  function openModalFunc() { modal.classList.add('active'); }
+  function closeModalFunc() { modal.classList.remove('active'); }
+  openModalBtns.forEach(btn => btn.addEventListener('click', (e) => { e.preventDefault(); openModalFunc(); }));
+  if(closeModalBtn) closeModalBtn.addEventListener('click', closeModalFunc);
+  window.addEventListener('click', (e) => { if(e.target === modal) closeModalFunc(); });
+
+  const admissionForm = document.getElementById('admissionForm');
+  const thankyouPopup = document.getElementById('thankyouPopup');
+  admissionForm.addEventListener('submit', async (e) => {
+    e.preventDefault();
+    const name = document.getElementById('studentName').value;
+    const email = document.getElementById('studentEmail').value;
+    const phone = document.getElementById('studentPhone').value;
+    const course = document.getElementById('studentCourse').value;
+    if(!name || !email || !phone || !course) { alert("Please fill all fields"); return; }
+    const formData = new FormData();
+    formData.append('name', name); formData.append('email', email); formData.append('phone', phone); formData.append('course', course);
+    formData.append('_subject', 'New Enrollment Request'); formData.append('_captcha', 'false');
+    try {
+      await fetch('https://formsubmit.co/ajax/sadeeqonlineacademy1@gmail.com', { method: 'POST', body: formData });
+      thankyouPopup.classList.add('show');
+      admissionForm.reset(); closeModalFunc();
+      setTimeout(() => thankyouPopup.classList.remove('show'), 4000);
+    } catch(err) { alert("Network issue. Please email us directly."); }
+  });
+
+  const menuToggle = document.getElementById('menuToggle');
+  const navLinks = document.getElementById('navLinks');
+  if(menuToggle) menuToggle.addEventListener('click', () => { navLinks.classList.toggle('active'); });
+</script>
+</body>
+</html>
